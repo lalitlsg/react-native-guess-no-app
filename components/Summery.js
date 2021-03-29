@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, StyleSheet, Text, TouchableNativeFeedback } from "react-native";
 import Colors from "../constants/Colors";
+import NumberContext from "../contexts/NumberContext";
 import Card from "./Card";
 import Number from "./Number";
 
 const Summery = ({ selectedNumber }) => {
+  const onNumberEntered = useContext(NumberContext);
+
   return (
     <Card style={styles.summeryCardStyles}>
       <Text style={styles.startText}>You Choose</Text>
       <View>
         <Number selectedNumber={selectedNumber} />
       </View>
-      <TouchableNativeFeedback>
+      <TouchableNativeFeedback onPress={() => onNumberEntered(selectedNumber)}>
         <View style={styles.startButton}>
           <Text style={styles.startText}>START GAME</Text>
         </View>

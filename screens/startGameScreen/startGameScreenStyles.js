@@ -30,16 +30,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     marginTop: 30,
   },
-  buttonStyles: {
-    width: 70,
-    height: 30,
-    backgroundColor: Colors.basic,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 3,
-    elevation: 10,
-    borderWidth: 1,
-  },
 });
 
 export default styles;

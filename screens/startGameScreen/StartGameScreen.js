@@ -7,6 +7,7 @@ import {
   Keyboard,
   Alert,
 } from "react-native";
+import Button from "../../components/Button";
 import Card from "../../components/Card";
 import Input from "../../components/Input";
 import Summery from "../../components/Summery";
@@ -64,20 +65,16 @@ const StartGameScreen = () => {
             value={enteredValue}
           />
           <View style={styles.buttonContainer}>
-            <TouchableNativeFeedback onPress={resetHandler}>
-              <View
-                style={{ ...styles.buttonStyles, borderColor: Colors.accent }}
-              >
-                <Text style={{ color: Colors.accent }}>Reset</Text>
-              </View>
-            </TouchableNativeFeedback>
-            <TouchableNativeFeedback onPress={confirmHandler}>
-              <View
-                style={{ ...styles.buttonStyles, borderColor: Colors.success }}
-              >
-                <Text style={{ color: Colors.success }}>Confirm</Text>
-              </View>
-            </TouchableNativeFeedback>
+            <Button
+              buttonText="Reset"
+              clickHandler={resetHandler}
+              color={Colors.accent}
+            />
+            <Button
+              buttonText="Confirm"
+              clickHandler={confirmHandler}
+              color={Colors.success}
+            />
           </View>
         </Card>
         {confirmOutput}
