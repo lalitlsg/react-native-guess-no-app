@@ -2,8 +2,10 @@ import React, { useContext } from "react";
 import { View, StyleSheet, Text, TouchableNativeFeedback } from "react-native";
 import Colors from "../constants/Colors";
 import NumberContext from "../contexts/NumberContext";
+import Button from "./Button";
 import Card from "./Card";
 import Number from "./Number";
+import RaisedButton from "./RaisedButton";
 
 const Summery = ({ selectedNumber }) => {
   const onNumberEntered = useContext(NumberContext);
@@ -14,11 +16,10 @@ const Summery = ({ selectedNumber }) => {
       <View>
         <Number selectedNumber={selectedNumber} />
       </View>
-      <TouchableNativeFeedback onPress={() => onNumberEntered(selectedNumber)}>
-        <View style={styles.startButton}>
-          <Text style={styles.startText}>START GAME</Text>
-        </View>
-      </TouchableNativeFeedback>
+      <RaisedButton
+        onPress={() => onNumberEntered(selectedNumber)}
+        label="START GAME"
+      />
     </Card>
   );
 };
@@ -33,19 +34,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     width: 370,
-  },
-  startButton: {
-    width: 100,
-    height: 100,
-    backgroundColor: "#4dff4d",
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 3,
-    elevation: 5,
-  },
-  startText: {
-    fontSize: 20,
-    textAlign: "center",
   },
 });
 
