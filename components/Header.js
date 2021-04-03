@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     color: Colors.basic,
     fontSize: 18,
+    fontFamily: "roboto-font",
   },
 });
 
