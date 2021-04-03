@@ -1,11 +1,12 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet } from "react-native";
 import Colors from "../constants/Colors";
+import AppText from "./AppText";
 
 const Number = ({ selectedNumber }) => {
   return (
     <View style={styles.numberContainer}>
-      <Text style={styles.numberText}>{selectedNumber}</Text>
+      <AppText style={styles.numberText}>{selectedNumber}</AppText>
     </View>
   );
 };

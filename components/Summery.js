@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { View, StyleSheet, Text, TouchableNativeFeedback } from "react-native";
+import { View, StyleSheet, TouchableNativeFeedback } from "react-native";
 import Colors from "../constants/Colors";
 import NumberContext from "../contexts/NumberContext";
-import Button from "./Button";
+import AppText from "./AppText";
 import Card from "./Card";
 import Number from "./Number";
 import RaisedButton from "./RaisedButton";
@@ -12,7 +12,7 @@ const Summery = ({ selectedNumber }) => {
 
   return (
     <Card style={styles.summeryCardStyles}>
-      <Text style={styles.startText}>You Choose</Text>
+      <AppText style={styles.startText}>You Choose</AppText>
       <View>
         <Number selectedNumber={selectedNumber} />
       </View>

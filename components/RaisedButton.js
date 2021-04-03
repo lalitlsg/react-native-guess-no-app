@@ -1,11 +1,12 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableNativeFeedback } from "react-native";
+import { View, StyleSheet, TouchableNativeFeedback } from "react-native";
+import AppText from "./AppText";
 
 const RaisedButton = (props) => {
   return (
     <TouchableNativeFeedback {...props}>
       <View style={styles.startButton}>
-        <Text style={styles.startText}>{props.label}</Text>
+        <AppText style={styles.startText}>{props.label}</AppText>
       </View>
     </TouchableNativeFeedback>
   );

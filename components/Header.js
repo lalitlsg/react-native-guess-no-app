@@ -1,11 +1,12 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import Colors from "../constants/Colors";
+import AppText from "./AppText";
 
 const Header = ({ title }) => {
   return (
     <View style={styles.header}>
-      <Text style={styles.headerTitle}>{title}</Text>
+      <AppText style={styles.headerTitle}>{title}</AppText>
     </View>
   );
 };
@@ -22,7 +23,6 @@ const styles = StyleSheet.create({
   headerTitle: {
     color: Colors.basic,
     fontSize: 18,
-    fontFamily: "roboto-font",
   },
 });
 

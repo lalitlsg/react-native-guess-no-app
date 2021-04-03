@@ -1,11 +1,6 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  TouchableWithoutFeedback,
-  Keyboard,
-  Alert,
-} from "react-native";
+import { View, TouchableWithoutFeedback, Keyboard, Alert } from "react-native";
+import AppText from "../../components/AppText";
 import Button from "../../components/Button";
 import Card from "../../components/Card";
 import Input from "../../components/Input";
@@ -45,7 +40,7 @@ const StartGameScreen = () => {
   if (confirmed) {
     confirmOutput = <Summery selectedNumber={selectedNumber} />;
   }
-  <Text>Choosen Number : {selectedNumber}</Text>;
+  <AppText>Chosen Number : {selectedNumber}</AppText>;
   return (
     <TouchableWithoutFeedback
       onPress={() => {
@@ -54,7 +49,7 @@ const StartGameScreen = () => {
     >
       <View style={styles.screen}>
         <Card style={styles.cardContainer}>
-          <Text style={styles.title}>Start a new game!</Text>
+          <AppText style={styles.title}>Start a new game!</AppText>
           <Input
             style={styles.textInput}
             placeholder="Enter Number"

@@ -1,12 +1,13 @@
 import React from "react";
-import { TouchableNativeFeedback, View, StyleSheet, Text } from "react-native";
+import { TouchableNativeFeedback, View, StyleSheet } from "react-native";
 import Colors from "../constants/Colors";
+import AppText from "./AppText";
 
 const Button = ({ clickHandler, buttonText, color, style }) => {
   return (
     <TouchableNativeFeedback onPress={clickHandler}>
       <View style={{ ...styles.buttonStyles, borderColor: color, ...style }}>
-        <Text style={{ color: color }}>{buttonText}</Text>
+        <AppText style={{ color: color }}>{buttonText}</AppText>
       </View>
     </TouchableNativeFeedback>
   );

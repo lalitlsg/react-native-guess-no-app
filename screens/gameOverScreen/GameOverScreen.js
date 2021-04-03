@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
+import AppText from "../../components/AppText";
 import Number from "../../components/Number";
 import RaisedButton from "../../components/RaisedButton";
 
@@ -8,10 +9,10 @@ const GameOverScreen = ({ guessRounds, userNumber, onRestart }) => {
     <View style={styles.screen}>
       <View style={styles.container}>
         <View style={styles.gameOverContainer}>
-          <Text>Game Over In</Text>
+          <AppText>Game Over In</AppText>
           <Number selectedNumber={guessRounds} />
-          <Text>Rounds</Text>
-          <Text>Number was {userNumber}</Text>
+          <AppText>Rounds</AppText>
+          <AppText>Number was {userNumber}</AppText>
         </View>
         <RaisedButton label="RESTART" onPress={onRestart} />
       </View>
