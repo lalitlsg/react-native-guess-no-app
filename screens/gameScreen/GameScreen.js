@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { View, StyleSheet, Alert } from "react-native";
+import { View, StyleSheet, Alert, ScrollView, FlatList } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 import AppText from "../../components/AppText";
@@ -19,17 +19,25 @@ const generateNumberBetween = (min, max, excludeNumber) => {
   return randomNumber;
 };
 
+const renderList = (listLength, value) => (
+  <View key={value} style={styles.listItemContainer}>
+    <AppText>#{listLength - value.index}</AppText>
+    <AppText>{value.item}</AppText>
+  </View>
+);
+
 const GameScreen = ({ userChoice, onGameOver }) => {
-  const [opponentGuess, setOpponentGuess] = useState(
-    generateNumberBetween(1, 100, userChoice)
-  );
-  const [rounds, setRounds] = useState(0);
+  const initialGuess = generateNumberBetween(1, 100, userChoice);
+  const [opponentGuess, setOpponentGuess] = useState(initialGuess);
+  const [currentGuesses, setCurrentGuesses] = useState([
+    initialGuess.toString(),
+  ]);
   const currentLow = useRef(0);
   const currentHigh = useRef(100);
 
   useEffect(() => {
     if (opponentGuess === userChoice) {
-      onGameOver(rounds);
+      onGameOver(currentGuesses.length);
     }
   }, [opponentGuess]);
 
@@ -46,7 +54,7 @@ const GameScreen = ({ userChoice, onGameOver }) => {
     if (direction === "lower") {
       currentHigh.current = opponentGuess;
     } else {
-      currentLow.current = opponentGuess;
+      currentLow.current = opponentGuess + 1;
     }
 
     const nextGuess = generateNumberBetween(
@@ -55,7 +63,7 @@ const GameScreen = ({ userChoice, onGameOver }) => {
       opponentGuess
     );
     setOpponentGuess(nextGuess);
-    setRounds((currentRound) => currentRound + 1);
+    setCurrentGuesses((prevGuess) => [nextGuess.toString(), ...prevGuess]);
   };
 
   return (
@@ -78,6 +86,19 @@ const GameScreen = ({ userChoice, onGameOver }) => {
           />
         </View>
       </Card>
+      <View style={styles.listContainer}>
+        {/* <ScrollView contentContainerStyle={styles.list}>
+          {currentGuesses.map((item, index) =>
+            renderList(item, currentGuesses.length - index)
+          )}
+        </ScrollView> */}
+        <FlatList
+          keyExtractor={(item) => item}
+          data={currentGuesses}
+          renderItem={renderList.bind(this, currentGuesses.length)}
+          contentContainerStyle={styles.list}
+        />
+      </View>
     </View>
   );
 };
@@ -85,6 +106,7 @@ const GameScreen = ({ userChoice, onGameOver }) => {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
+    alignItems: "center",
   },
   card: {
     width: 370,
@@ -103,6 +125,23 @@ const styles = StyleSheet.create({
     width: "45%",
     justifyContent: "space-between",
     marginVertical: 30,
+  },
+  listContainer: {
+    flex: 1,
+    width: 350,
+  },
+  list: {
+    flexGrow: 1,
+    justifyContent: "flex-end",
+  },
+  listItemContainer: {
+    padding: 10,
+    marginVertical: 15,
+    borderWidth: 1,
+    borderColor: Colors.lightGrey,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    width: "100%",
   },
 });
 

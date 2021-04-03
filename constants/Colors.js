@@ -4,4 +4,5 @@ export default {
   black: "#000",
   success: "#008000",
   accent: "#ffae1a",
+  lightGrey: "#d9d9d9",
 };
